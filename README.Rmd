@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # lievens
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/lievens)](https://CRAN.R-project.org/package=lievens)
+[![R-CMD-check](https://github.com/ramiromagno/lievens/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ramiromagno/lievens/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `{lievens}` provides Real-Time PCR Data Sets by Lievens et al. (2012).
