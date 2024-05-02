@@ -93,7 +93,7 @@ lievens |>
   geom_line(linewidth = 0.1, alpha = 0.5) +
   geom_point(size = 0.05, alpha = 0.5) +
   labs(color = "Fold dilution") +
-  ylim(0, 12000)
+  ylim(-100, 12000)
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -107,7 +107,7 @@ lievens |>
   geom_line(linewidth = 0.1, alpha = 0.5) +
   geom_point(size = 0.05, alpha = 0.5) +
   labs(color = "Isopropanol, % (v/v)") +
-  ylim(0, 12000)
+  ylim(-100, 12000)
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
@@ -120,12 +120,8 @@ lievens |>
   ggplot(aes(x = cycle, y = fluor, group = interaction(plate, inhibitor, inhibitor_conc, replicate), col = as.factor(inhibitor_conc))) +
   geom_line(linewidth = 0.1, alpha = 0.5) +
   geom_point(size = 0.05, alpha = 0.5) +
-  labs(color = "Tannic acid, mg/mL") +
-  ylim(0, 12000)
-#> Warning: Removed 74 rows containing missing values or values outside the scale range
-#> (`geom_line()`).
-#> Warning: Removed 74 rows containing missing values or values outside the scale range
-#> (`geom_point()`).
+  labs(color = "Tannic acid, ug/mL") +
+  ylim(-100, 12000)
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
