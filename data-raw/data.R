@@ -7,6 +7,16 @@ series <-
                  copies = c(100000L, 20000L, 4000L, 800L, 160L),
                  dilution = as.integer(100000L / copies))
 
+isopropanol_conc <-
+  tibble::tibble(sample = paste0("S", 1:5),
+                 inhibitor_conc = c(2.5, 0.5, 0.1, 0.02, 0.004))
+
+# See section PCR reactions of original paper.
+# ng / 25 uL
+tannic_acid_conc <-
+  tibble::tibble(sample = paste0("S", 1:5),
+                 inhibitor_conc = c(5, 1, 0.2, 0.04, 0.08) / 25)
+
 wells <-
   tidyr::expand_grid(x = LETTERS[1:8], y = 1:12) |>
   dplyr::mutate(well = paste0(x, y)) |>
@@ -37,6 +47,7 @@ file1_data <-
                    target,
                    dye,
                    inhibitor = "none",
+                   inhibitor_conc = 0,
                    sample,
                    sample_type,
                    replicate,
@@ -55,6 +66,7 @@ file2_data <-
   dplyr::mutate(sample = stringr::str_extract(reaction, "S\\d+")) |>
   dplyr::mutate(replicate = stringr::str_extract(reaction, "\\d+$")) |>
   dplyr::left_join(series, by = "sample") |>
+  dplyr::left_join(isopropanol_conc, by = "sample") |>
   dplyr::mutate(
     sample_type = "std",
     plate = "soy+isopropanol",
@@ -67,6 +79,7 @@ file2_data <-
                    target,
                    dye,
                    inhibitor = "isopropanol",
+                   inhibitor_conc,
                    sample,
                    sample_type,
                    replicate,
@@ -85,6 +98,7 @@ file3_data <-
   dplyr::mutate(sample = stringr::str_extract(reaction, "S\\d+")) |>
   dplyr::mutate(replicate = stringr::str_extract(reaction, "\\d+$")) |>
   dplyr::left_join(series, by = "sample") |>
+  dplyr::left_join(tannic_acid_conc, by = "sample") |>
   dplyr::mutate(
     sample_type = "std",
     plate = "soy+tannic acid",
@@ -97,6 +111,7 @@ file3_data <-
                    target,
                    dye,
                    inhibitor = "tannic acid",
+                   inhibitor_conc,
                    sample,
                    sample_type,
                    replicate,
@@ -118,7 +133,8 @@ lievens <-
     inhibitor = factor(inhibitor, levels = c("none", "isopropanol", "tannic acid")),
     sample = as.factor(sample),
     sample_type = as.factor(sample_type),
-    replicate = as.factor(replicate)
-  )
+    replicate = factor(replicate, levels = 1:18)
+  ) |>
+  dplyr::arrange(plate, sample, replicate, copies, cycle)
 
 usethis::use_data(lievens, overwrite = TRUE)
