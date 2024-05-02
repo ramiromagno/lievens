@@ -26,3 +26,5 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
+URL: https://rmagno.eu/lievens/, https://github.com/ramiromagno/lievens
+BugReports: https://github.com/ramiromagno/lievens/issues

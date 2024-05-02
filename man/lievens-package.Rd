@@ -8,6 +8,15 @@
 \description{
 Real-time quantitative polymerase chain reaction (qPCR) data sets by Lievens et al. (2012) \doi{10.1093/nar/gkr775}. Provides one single tabular tidy data set in long format, encompassing three dilution series, targeted against the soybean Lectin endogene. Each dilution series was assayed in one of the following PCR-efficiency-modifying conditions: no PCR inhibition, inhibition by isopropanol and inhibition by tannic acid. The inhibitors were co-diluted along with the dilution series. The co-dilution series consists of a five-point, five-fold serial dilution. For each concentration there are 18 replicates. Each amplification curve is 60 cycles long. Original raw data file is available at the Supplementary Data section at Nucleic Acids Research Online \doi{10.1093/nar/gkr775}.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rmagno.eu/lievens/}
+  \item \url{https://github.com/ramiromagno/lievens}
+  \item Report bugs at \url{https://github.com/ramiromagno/lievens/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Ramiro Magno \email{rmagno@pattern.institute} (\href{https://orcid.org/0000-0001-5226-3441}{ORCID})
 
