@@ -2,7 +2,6 @@
 % Please edit documentation in R/lievens-package.R
 \docType{package}
 \name{lievens-package}
-\alias{lievens}
 \alias{lievens-package}
 \title{lievens: Real-Time PCR Data Sets by Lievens et al. (2012)}
 \description{
