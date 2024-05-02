@@ -38,8 +38,8 @@ Isopropanol inhibition
 A series of reactions subjected to inhibition by isopropanol with
 concentrations: 2.5, 0.5, 0.1, 0.02, and 0.004 % (v/v). Because samples have
 been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.
+the same five-fold progression in tandem: \(100,000\), \(20,000\),
+\(4,000\), \(800\) and \(160\) copies.
 dplyr::filter(lievens, inhibitor == "isopropanol")
 #&amp;gt; # A tibble: 5,400 x 13
 #&amp;gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type
@@ -65,10 +65,10 @@ Tannic acid inhibition
 
 
 A series of reactions subjected to inhibition by tannic acid with
-concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032. Because samples have
-been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.
+concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032 ul/mL. Because samples
+have been co-diluted, the initial copy numbers of the target amplicon also
+follow the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800
+and 160.
 dplyr::filter(lievens, inhibitor == "tannic acid")
 #&amp;gt; # A tibble: 5,400 x 13
 #&amp;gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type
@@ -127,8 +127,8 @@ Isopropanol inhibition
 A series of reactions subjected to inhibition by isopropanol with
 concentrations: 2.5, 0.5, 0.1, 0.02, and 0.004 % (v/v). Because samples have
 been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.
+the same five-fold progression in tandem: \(100,000\), \(20,000\),
+\(4,000\), \(800\) and \(160\) copies.
 dplyr::filter(lievens, inhibitor == "isopropanol")
 #&amp;gt; # A tibble: 5,400 x 13
 #&amp;gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type
@@ -154,10 +154,10 @@ Tannic acid inhibition
 
 
 A series of reactions subjected to inhibition by tannic acid with
-concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032. Because samples have
-been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.
+concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032 ul/mL. Because samples
+have been co-diluted, the initial copy numbers of the target amplicon also
+follow the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800
+and 160.
 dplyr::filter(lievens, inhibitor == "tannic acid")
 #&amp;gt; # A tibble: 5,400 x 13
 #&amp;gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type
@@ -262,8 +262,8 @@ through 60 cycles.</p><div class="section">
 <p>A series of reactions subjected to inhibition by isopropanol with
 concentrations: 2.5, 0.5, 0.1, 0.02, and 0.004 % (v/v). Because samples have
 been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.</p>
+the same five-fold progression in tandem: \(100,000\), \(20,000\),
+\(4,000\), \(800\) and \(160\) copies.</p>
 <p></p><div class="sourceCode r"><pre><code><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="va">lievens</span>, <span class="va">inhibitor</span> <span class="op">==</span> <span class="st">"isopropanol"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5,400 x 13</span></span>
 <span><span class="co">#&gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type</span></span>
@@ -288,10 +288,10 @@ the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
 
 
 <p>A series of reactions subjected to inhibition by tannic acid with
-concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032. Because samples have
-been co-diluted, the initial copy numbers of the target amplicon also follow
-the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-160.</p>
+concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032 ul/mL. Because samples
+have been co-diluted, the initial copy numbers of the target amplicon also
+follow the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800
+and 160.</p>
 <p></p><div class="sourceCode r"><pre><code><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu">filter</span><span class="op">(</span><span class="va">lievens</span>, <span class="va">inhibitor</span> <span class="op">==</span> <span class="st">"tannic acid"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5,400 x 13</span></span>
 <span><span class="co">#&gt;    plate          well  target dye   inhibitor inhibitor_conc sample sample_type</span></span>
@@ -340,7 +340,8 @@ Green I master mix (Roche) (<code>"SYBR"</code>).</p></dd>
 the dilution series the value is <code>"none"</code>.</p></dd>
 
 <dt><code>inhibitor_conc</code></dt>
-<dd><p>Inhibitor concentration in mg/mL.</p></dd>
+<dd><p>Inhibitor concentration. Units are % (v/v) for
+isopropanol, and ug/mL for tannic acid.</p></dd>
 
 <dt><code>sample</code></dt>
 <dd><p>Name of the biological sample. Samples have a simple
