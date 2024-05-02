@@ -33,10 +33,10 @@
 #' ### Tannic acid inhibition
 #'
 #' A series of reactions subjected to inhibition by tannic acid with
-#' concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032. Because samples have
-#' been co-diluted, the initial copy numbers of the target amplicon also follow
-#' the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-#' 160.
+#' concentrations: 0.2, 0.04, 0.008, 0.0016 and 0.0032 ul/mL. Because samples
+#' have been co-diluted, the initial copy numbers of the target amplicon also
+#' follow the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800
+#' and 160.
 #'
 #' ```{r}
 #' dplyr::filter(lievens, inhibitor == "tannic acid")
@@ -57,7 +57,8 @@
 #' Green I master mix (Roche) (`"SYBR"`).}
 #' \item{`inhibitor`}{Name of the molecule used as PCR inhibitor. In the case of
 #' the dilution series the value is `"none"`.}
-#' \item{`inhibitor_conc`}{Inhibitor concentration in mg/mL.}
+#' \item{`inhibitor_conc`}{Inhibitor concentration. Units are % (v/v) for
+#' isopropanol, and ug/mL for tannic acid.}
 #' \item{`sample`}{Name of the biological sample. Samples have a simple
 #' consecutive identifier: S1, S2, ..., S5.}
 #' \item{`sample_type`}{Sample type. All reactions are standard curves, i.e.
