@@ -23,8 +23,8 @@
 #' A series of reactions subjected to inhibition by isopropanol with
 #' concentrations: 2.5, 0.5, 0.1, 0.02, and 0.004 % (v/v). Because samples have
 #' been co-diluted, the initial copy numbers of the target amplicon also follow
-#' the same five-fold progression in tandem: 100,000, 20,000, 4,000, 800 and
-#' 160.
+#' the same five-fold progression in tandem: \eqn{100,000}, \eqn{20,000},
+#' \eqn{4,000}, \eqn{800} and \eqn{160} copies.
 #'
 #' ```{r}
 #' dplyr::filter(lievens, inhibitor == "isopropanol")
