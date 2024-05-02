@@ -28,14 +28,66 @@ install.packages("lievens")
 
 ## Data
 
-```{r example, dpi=300, fig.height=4}
+Each sample group is defined by the inhibitor ("none", "isopropanol", "tannic
+acid"), respective inhibitor concentration, and initial amplicon copy number.
+Note that inhibitor concentration and initial copy number of the amplicon
+are not independent of each other as concentrations are obtained by
+co-dilution.
+
+```{r}
 library(lievens)
 library(ggplot2)
+library(dplyr, warn.conflicts = FALSE)
 
 lievens |>
+  dplyr::distinct(plate, inhibitor, inhibitor_conc, copies, dilution)
+```
+
+Here is the number of replicates per group:
+
+```{r}
+lievens |>
+  dplyr::distinct(plate, inhibitor, inhibitor_conc, copies, dilution, replicate) |>
+  dplyr::count(plate, inhibitor, inhibitor_conc, copies, dilution) |>
+  print(n = Inf)
+```
+
+## Standard dilution series
+
+Most concentrated set of replicates in the dilution series have 100,000 copies
+of the soybean Lectin endogene (Le1) derived amplicon. Following samples in the
+series are five-fold dilutions.
+
+```{r dpi=300, fig.height=4}
+lievens |>
+  dplyr::filter(inhibitor == "none") |>
   ggplot(aes(x = cycle, y = fluor, group = interaction(plate, inhibitor, dilution, replicate), col = as.factor(dilution))) +
   geom_line(linewidth = 0.1, alpha = 0.5) +
   geom_point(size = 0.05, alpha = 0.5) +
-  facet_wrap(vars(inhibitor)) +
-  labs(color = "Fold dilution")
+  labs(color = "Fold dilution") +
+  ylim(0, 12000)
+```
+
+## Inhibition by isopropanol
+
+```{r dpi=300, fig.height=4}
+lievens |>
+  dplyr::filter(inhibitor == "isopropanol") |>
+  ggplot(aes(x = cycle, y = fluor, group = interaction(plate, inhibitor, inhibitor_conc, replicate), col = as.factor(inhibitor_conc))) +
+  geom_line(linewidth = 0.1, alpha = 0.5) +
+  geom_point(size = 0.05, alpha = 0.5) +
+  labs(color = "Isopropanol, % (v/v)") +
+  ylim(0, 12000)
+```
+
+## Inhibition by tannic acid
+
+```{r dpi=300, fig.height=4}
+lievens |>
+  dplyr::filter(inhibitor == "tannic acid") |>
+  ggplot(aes(x = cycle, y = fluor, group = interaction(plate, inhibitor, inhibitor_conc, replicate), col = as.factor(inhibitor_conc))) +
+  geom_line(linewidth = 0.1, alpha = 0.5) +
+  geom_point(size = 0.05, alpha = 0.5) +
+  labs(color = "Tannic acid, mg/mL") +
+  ylim(0, 12000)
 ```
